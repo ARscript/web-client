@@ -1,22 +1,12 @@
 <div layout="row">
   <div flex="60" flex-sm="40">
-    <div ui-ace="{
-      mode: 'javascript',
-      onLoad: aceLoaded,
-      onChange: aceChanged,
-      require: ['ace/ext/language_tools'],
-      advanced: {
-        enableSnippets: true,
-        enableBasicAutocompletion: true,
-        enableLiveAutocompletion: true
-      }
-    }"></div>
+    <div ui-ace></div>
     <md-checkbox ng-model="data.vimMode" aria-label="Checkbox 1">
         Vim Mode: {{ data.vimMode  }}
     </md-checkbox>
     <select id="videoSource" class="form-control"></select>
   </div>
-  <div flex="40" flex-sm="60" hide-lg layout-margin layout-fill layout-padding>
+  <div flex="40" flex-sm="60" hide-sm layout-margin layout-fill layout-padding>
       <video id="camera-stream" width="500" autoplay>
   </div>
 </div>
