@@ -72,10 +72,23 @@ module.exports = function (grunt) {
         livereload: 35729
       },
       livereload: {
+        proxies:
+        [ { context:
+            [ '/api'
+            , '/sock'
+            ]
+          , host: '<%= connect.options.hostname %>'
+          , port: 8000
+          , https: false
+          , ws: true
+          , xforward: false
+          }
+        ],
         options: {
           open: 'http://localhost:9000/',
           middleware: function (connect) {
             return [
+              require('grunt-connect-proxy/lib/utils').proxyRequest,
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -391,6 +404,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'configureProxies:livereload',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',

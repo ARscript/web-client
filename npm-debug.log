@@ -1,0 +1,98 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save-dev',
+1 verbose cli   'grunt-connnect-proxy' ]
+2 info using npm@2.0.0
+3 info using node@v0.11.14
+4 warn package.json webclient@0.0.0 No repository field.
+5 verbose readDependencies using package.json deps
+6 verbose cache add [ 'grunt-connnect-proxy', null ]
+7 verbose cache add spec="grunt-connnect-proxy" args=["grunt-connnect-proxy",null]
+8 verbose parsed spec { raw: 'grunt-connnect-proxy',
+8 verbose parsed spec   scope: null,
+8 verbose parsed spec   name: 'grunt-connnect-proxy',
+8 verbose parsed spec   rawSpec: '',
+8 verbose parsed spec   spec: '*',
+8 verbose parsed spec   type: 'range' }
+9 verbose parsed spec { raw: 'grunt-connnect-proxy',
+9 verbose parsed spec   scope: null,
+9 verbose parsed spec   name: 'grunt-connnect-proxy',
+9 verbose parsed spec   rawSpec: '',
+9 verbose parsed spec   spec: '*',
+9 verbose parsed spec   type: 'range' }
+10 verbose addNamed [ 'grunt-connnect-proxy', '*' ]
+11 verbose addNamed [ null, '*' ]
+12 silly lockFile ec1e5585-grunt-connnect-proxy grunt-connnect-proxy@*
+13 verbose lock grunt-connnect-proxy@* /home/dgrove/.npm/ec1e5585-grunt-connnect-proxy.lock
+14 silly addNameRange { name: 'grunt-connnect-proxy', range: '*', hasData: false }
+15 verbose mapToRegistry name grunt-connnect-proxy
+16 verbose mapToRegistry uri https://registry.npmjs.org/grunt-connnect-proxy
+17 verbose request on initialization, where is /grunt-connnect-proxy
+18 verbose request after pass 1, where is /grunt-connnect-proxy
+19 verbose request url raw /grunt-connnect-proxy
+20 verbose request resolving registry [ 'https://registry.npmjs.org/', './grunt-connnect-proxy' ]
+21 verbose request after pass 2, where is https://registry.npmjs.org/grunt-connnect-proxy
+22 verbose request no auth needed
+23 info attempt registry request try #1 at 00:51:21
+24 verbose request id 6883293a6761199b
+25 http request GET https://registry.npmjs.org/grunt-connnect-proxy
+26 http 404 https://registry.npmjs.org/grunt-connnect-proxy
+27 verbose headers { date: 'Thu, 11 Dec 2014 08:52:39 GMT',
+27 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+27 verbose headers   'content-type': 'application/json',
+27 verbose headers   'cache-control': 'max-age=0',
+27 verbose headers   'content-length': '52',
+27 verbose headers   'accept-ranges': 'bytes',
+27 verbose headers   via: '1.1 varnish',
+27 verbose headers   age: '0',
+27 verbose headers   'x-served-by': 'cache-sjc3132-SJC',
+27 verbose headers   'x-cache': 'MISS',
+27 verbose headers   'x-cache-hits': '0',
+27 verbose headers   'x-timer': 'S1418287959.489630,VS0,VE364',
+27 verbose headers   connection: 'close' }
+28 silly registry.get cb [ 404,
+28 silly registry.get   { date: 'Thu, 11 Dec 2014 08:52:39 GMT',
+28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=0',
+28 silly registry.get     'content-length': '52',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '0',
+28 silly registry.get     'x-served-by': 'cache-sjc3132-SJC',
+28 silly registry.get     'x-cache': 'MISS',
+28 silly registry.get     'x-cache-hits': '0',
+28 silly registry.get     'x-timer': 'S1418287959.489630,VS0,VE364',
+28 silly registry.get     connection: 'close' } ]
+29 silly lockFile ec1e5585-grunt-connnect-proxy grunt-connnect-proxy@*
+30 silly lockFile ec1e5585-grunt-connnect-proxy grunt-connnect-proxy@*
+31 verbose stack Error: 404 Not Found: grunt-connnect-proxy
+31 verbose stack     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:259:14)
+31 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:198:65)
+31 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:236:22)
+31 verbose stack     at Request.emit (events.js:110:17)
+31 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+31 verbose stack     at Request.emit (events.js:129:20)
+31 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+31 verbose stack     at IncomingMessage.emit (events.js:129:20)
+31 verbose stack     at _stream_readable.js:907:16
+31 verbose stack     at process._tickCallback (node.js:372:11)
+32 verbose statusCode 404
+33 verbose pkgid grunt-connnect-proxy
+34 verbose cwd /home/dgrove/Sources/ARscript/web-client
+35 error Linux 3.17.4-1-ARCH
+36 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "--save-dev" "grunt-connnect-proxy"
+37 error node v0.11.14
+38 error npm  v2.0.0
+39 error code E404
+40 error 404 Not Found: grunt-connnect-proxy
+40 error 404
+40 error 404 'grunt-connnect-proxy' is not in the npm registry.
+40 error 404 You should bug the author to publish it (or use the name yourself!)
+40 error 404 It was specified as a dependency of 'webclient'
+40 error 404
+40 error 404 Note that you can also install from a
+40 error 404 tarball, folder, http url, or git url.
+41 verbose exit [ 1, true ]

@@ -1,20 +1,51 @@
 <div layout="row">
-  <div flex="60" flex-sm="40">
-    <div ui-ace></div>
-    <md-checkbox ng-model="data.vimMode" aria-label="Checkbox 1">
+  <div
+    flex="60"
+    flex-sm="40"
+    hide-lg
+  >
+    <div
+    ng-if="!utils.isTango"
+    ui-ace="{
+      useWrapMode: true,
+      showGutter: false,
+      theme:'twilight',
+      mode:'html',
+      firstLineNumber: 1,
+      onLoad: aceLoaded,
+      onChange: aceChanged
+    }"
+    ng-model="editorText"
+    >
+    </div>
+    <md-checkbox
+      ng-model="data.vimMode"
+      aria-label="Vim Mode"
+    >
         Vim Mode: {{ data.vimMode  }}
     </md-checkbox>
-    <select id="videoSource" class="form-control"></select>
   </div>
   <div
     flex="40"
-    flex-sm="60"
-    hide-lg
+    flex-sm="100"
     layout-margin
     layout-fill
     layout-padding
-    id="video-container"
+    layout-align="center start"
   >
-    <video id="camera-stream" width="500" autoplay>
+    <select
+      id="videoSource"
+      class="form-control"
+    >
+    </select>
+    <div
+      id="video-container"
+    >
+      <video
+        id="camera-stream"
+        width="500"
+        autoplay
+      />
+    </div>
   </div>
 </div>

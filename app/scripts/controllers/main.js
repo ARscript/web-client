@@ -14,17 +14,20 @@ angular.module('webClientApp')
   , function
     ( $scope
     , socket
+    , utils
+    , sock
     )
     {
       $scope.data = {};
       $scope.data.vimMode = true;
-
+      $scope.utils = utils
       $scope.aceLoaded = function(_editor) {
         // Options
       };
       $scope.aceChanged = function(e) {
         //
       };
+      $scope.editorText = '';
 
       var videoSelect = document.querySelector('select#videoSource');
       var videoElement = document.getElementById('camera-stream');

@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMaterial',
-    'ui.ace'
+    'ui.ace',
+    'bd.sockjs'
   ])
   .config(function ($routeProvider) {
     $routeProvider
