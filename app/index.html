@@ -20,25 +20,12 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container">
       <md-toolbar>
         <div class="md-toolbar-tools">
           <span class="md-flex">ARscript</span>
         </div>
       </md-toolbar>
-          <!-- Add your site or application content here
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">webClient</h3>
-      </div>-->
-
       <div ng-view=""></div>
-
-    </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -73,6 +60,8 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
     <!-- endbower -->
+    <script src="bower_components/ace-builds/src-noconflict/ace.js"></script>
+    <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->

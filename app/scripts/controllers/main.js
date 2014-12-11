@@ -9,9 +9,18 @@
  */
 angular.module('webClientApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.data = {};
+    $scope.data.vimMode = true;
+
+   // var webGL = { template: 'var shit = cool' };
+    $scope.aceLoaded = function(_editor) {
+      _editor.setKeyboardHandler(require('ace/keyboard/keybinding/vim').Vim);
+      // Options
+      //_editor.setReadOnly(true);
+    };
+/*
+    $scope.aceChanged = function(e) {
+      //
+    };
+*/
   });

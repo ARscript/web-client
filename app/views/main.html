@@ -1,8 +1,26 @@
 <div layout="row">
-  <div flex="66" flex-sm="33">
-      I flex to one-third of the space on mobile, and two-thirds on other devices.
+  <div flex="60" flex-sm="40">
+    <div ui-ace="{
+      useWrapMode : true,
+      showGutter: false,
+      theme:'solarized_dark',
+      mode: 'javascript',
+      firstLineNumber: 5,
+      onLoad: aceLoaded,
+      onChange: aceChanged,
+      require: ['ace/ext/language_tools'],
+      advanced: {
+        enableSnippets: true,
+        enableBasicAutocompletion: true,
+        enableLiveAutocompletion: true
+      }
+    }">{{ webGL.template }}</div>
+    <md-checkbox ng-model="data.vimMode" aria-label="Checkbox 1">
+        Vim Mode: {{ data.vimMode  }}
+    </md-checkbox>
+
   </div>
-  <div flex="33" flex-sm="66" hide-lg>
-      I flex to two-thirds of the space on mobile, and one-third on other devices.
+  <div flex="40" flex-sm="60" hide-lg>
+    <p>webGL context {{webGL.template}}<p>
   </div>
 </div>
