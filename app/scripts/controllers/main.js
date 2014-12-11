@@ -13,6 +13,7 @@ angular.module('webClientApp')
   ( 'MainCtrl'
   , function
     ( $scope
+    , socket
     )
     {
       $scope.data = {};
@@ -30,7 +31,7 @@ angular.module('webClientApp')
 
       $scope.wsTest = function(){
         if(!'WebSocket' in window) {
-          alert('WebSockets are not available in your browser. This app will not work');
+          alert('WebSockets are not available in your browser. This app will not work!');
         }
       };
 
