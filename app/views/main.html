@@ -8,22 +8,36 @@
     ng-if="!utils.isTango"
     ui-ace="{
       useWrapMode: true,
-      showGutter: false,
-      theme:'twilight',
-      mode:'html',
+      theme:'tomorrow_night',
+      mode:'javascript',
       firstLineNumber: 1,
       onLoad: aceLoaded,
-      onChange: aceChanged
+      onChange: aceChanged,
+      require: ['ace/ext/language_tools'],
+      advanced: {
+        enableSnippets: true,
+        enableBasicAutocompletion: true,
+        enableLiveAutocompletion: true
+      }
     }"
     ng-model="editorText"
     >
+    this is here right
     </div>
-    <md-checkbox
-      ng-model="data.vimMode"
-      aria-label="Vim Mode"
-    >
-        Vim Mode: {{ data.vimMode  }}
-    </md-checkbox>
+    <div layout="row" layout-align="space-around center">
+      <md-checkbox
+        ng-model="data.vimMode"
+        ng-change="updateEditor()"
+        aria-label="Vim Mode"
+      >
+          Vim Mode: {{ data.vimMode  }}
+      </md-checkbox>
+      <md-button ng-click="runScript()"
+        class="md-raised md-primary"
+      >
+        Run Script
+      </md-button>
+    </div>
   </div>
   <div
     flex="40"

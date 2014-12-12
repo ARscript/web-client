@@ -16,18 +16,31 @@ angular.module('webClientApp')
     , socket
     , utils
     , sock
+    , $http
     )
     {
+      ace.config.set("basePath","bower_components/ace-builds/src-min-noconflict")
+
       $scope.data = {};
       $scope.data.vimMode = true;
       $scope.utils = utils
-      $scope.aceLoaded = function(_editor) {
-        // Options
+
+      $scope.aceLoaded = function(editor) {
+        var session = editor.getSession()
+        editor.setKeyboardHandler("ace/keyboard/vim");
+        //updateEditor();
+        $http.get('test.js').success(function(data) {
+          editor.setValue(data);
+        });
+
+        editor.setValue($scope.editorText);
       };
+
       $scope.aceChanged = function(e) {
         //
       };
-      $scope.editorText = '';
+
+      $scope.editorText = 'var camera, scene, renderer; var geometry, material, mesh; init(); animate();';
 
       var videoSelect = document.querySelector('select#videoSource');
       var videoElement = document.getElementById('camera-stream');
@@ -94,46 +107,20 @@ angular.module('webClientApp')
       start();
 
       // TODO make all k
-      var camera, scene, renderer;
-      var geometry, material, mesh;
-      init();
-      animate();
 
-      function init() {
+      /*
+      $scope.runScript = new function() {
+        console.log("running script");
+        console.log(//editor.getValue());
+      };
 
-        var contentWidth = $("#video-container").width()
-        var contentHeight = $("#video-container").height()
-        camera = new THREE.PerspectiveCamera(75, contentWidth / contentHeight, 1, 10000);
-        camera.position.z = 1000;
-
-        scene = new THREE.Scene();
-
-        geometry = new THREE.BoxGeometry(200, 200, 200);
-        material = new THREE.MeshBasicMaterial({
-          color: 0xff0000,
-                 wireframe: true
-        });
-
-        mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-        renderer = new THREE.WebGLRenderer({alpha: true});
-        renderer.setSize(contentWidth, contentHeight);
-
-        $(renderer.domElement).prependTo("#video-container")
-
+      $scope.updateEditor = new function() {
+        if($scope.data.vimMode)
+          $scope.editor.setKeyboardHandler("ace/keyboard/vim");
+        else
+          $scope.editor.setKeyboardHandler("ace/keyboard/default")
       }
-
-      function animate() {
-
-        requestAnimationFrame(animate);
-
-        mesh.rotation.x += 0.01;
-        mesh.rotation.y += 0.02;
-
-        renderer.render(scene, camera);
-
-      }
+*/
 
     }
   );
