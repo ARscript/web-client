@@ -10,12 +10,17 @@
 }
 
 .ace_editor {
-  height: 400px;
+  height: 600px;
+}
 
+.video-container {
+  position: absolute;
+}
+.three-container {
+ position: absolute;
 }
 
 #video-container {
-
   & > video {
     // top: -255px;
     left: 0;
@@ -30,6 +35,7 @@
     position: relative;
   }
 }
+
 
 /* Space out content a bit */
 body {

@@ -54,6 +54,8 @@ angular.module('webClientApp')
 
       $scope.runScript = function() {
         console.log("running script");
+        $('#three-container').empty();
+        // eval contents
         eval($scope.editorText);
       };
 
@@ -73,7 +75,6 @@ angular.module('webClientApp')
       // Get User media for local camera
       // Only need to do this on tango
       // TODO: If !tango get webrtc video from tango
-
       var videoSelect = document.querySelector('select#videoSource');
       var videoElement = document.getElementById('camera-stream');
 
@@ -96,7 +97,6 @@ angular.module('webClientApp')
           }
         }
       }
-
 
       function start(){
         if (!!window.stream) {

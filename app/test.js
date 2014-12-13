@@ -32,7 +32,7 @@ function init() {
   renderer = new THREE.WebGLRenderer({alpha: true});
   renderer.setSize(contentWidth, contentHeight);
 
-  $(renderer.domElement).prependTo('#video-container')
+  $(renderer.domElement).prependTo('#three-container')
 
 }
 
