@@ -22,7 +22,7 @@ function init() {
 
   geometry = new THREE.BoxGeometry(200, 200, 200);
   material = new THREE.MeshBasicMaterial({
-    color: 0x00ff00,
+    color: 0x0000ff,
     wireframe: true
   });
 

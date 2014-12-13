@@ -24,19 +24,29 @@
     >
     this is here right
     </div>
-    <div layout="row" layout-align="space-around center">
+    <div
+      layout="row"
+      layout-align="space-around center"
+    >
+      <select
+        id="videoSource"
+        class="form-control"
+      >
+      </select>
       <md-checkbox
-        ng-model="data.vimMode"
-        ng-change="updateEditor()"
+        ng-model="vimMode"
+        ng-click="toggleVimMode()"
         aria-label="Vim Mode"
       >
-          Vim Mode: {{ data.vimMode  }}
+          Vim Mode
       </md-checkbox>
-      <md-button ng-click="runScript()"
+      <md-button
+        ng-click="runScript()"
         class="md-raised md-primary"
       >
         Run Script
       </md-button>
+
     </div>
   </div>
   <div
@@ -47,12 +57,7 @@
     layout-padding
     layout-align="center start"
   >
-    <select
-      id="videoSource"
-      class="form-control"
-    >
-    </select>
-    <div
+        <div
       id="video-container"
     >
       <video

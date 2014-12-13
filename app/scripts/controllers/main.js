@@ -21,29 +21,42 @@ angular.module('webClientApp')
     {
       ace.config.set("basePath","bower_components/ace-builds/src-min-noconflict")
 
-      $scope.data = {};
-      $scope.data.vimMode = true;
+      $scope.vimMode = true;
       $scope.utils = utils
 
       $scope.aceLoaded = function(editor) {
+        // add session to scope
         var session = editor.getSession()
+        $scope.session = session;
+
         editor.setKeyboardHandler("ace/keyboard/vim");
         //updateEditor();
         $http.get('test.js').success(function(data) {
-          editor.setValue(data);
+          $scope.editorText = data;
         });
 
         editor.setValue($scope.editorText);
       };
 
       $scope.aceChanged = function(e) {
-        //
+        var editorEvent = e[0];
+        var editor = e[1];
+
+        $scope.editorText = editor.session.getValue();
       };
 
-      $scope.editorText = 'var camera, scene, renderer; var geometry, material, mesh; init(); animate();';
+      $scope.editorText = '';
 
-      var videoSelect = document.querySelector('select#videoSource');
-      var videoElement = document.getElementById('camera-stream');
+      $scope.toggleVimMode = function() {
+        console.log("vim toggle");
+        console.log($scope.session);
+      }
+
+      $scope.runScript = function() {
+        console.log("running script");
+        eval($scope.editorText);
+      };
+
 
       $scope.wsTest = function(){
         if(!'WebSocket' in window) {
@@ -56,6 +69,13 @@ angular.module('webClientApp')
         // $('.aceContainer').heigth(windowHeight + 'px');
       };
 
+
+      // Get User media for local camera
+      // Only need to do this on tango
+      // TODO: If !tango get webrtc video from tango
+
+      var videoSelect = document.querySelector('select#videoSource');
+      var videoElement = document.getElementById('camera-stream');
 
       // Normalize the various vendor prefixed versions of getUserMedia.
       navigator.getUserMedia = (navigator.getUserMedia ||
@@ -102,25 +122,13 @@ angular.module('webClientApp')
         videoElement.play();
       }
 
-      MediaStreamTrack.getSources(gotSources);
-      videoSelect.onchange = start;
-      start();
-
-      // TODO make all k
-
-      /*
-      $scope.runScript = new function() {
-        console.log("running script");
-        console.log(//editor.getValue());
-      };
-
-      $scope.updateEditor = new function() {
-        if($scope.data.vimMode)
-          $scope.editor.setKeyboardHandler("ace/keyboard/vim");
-        else
-          $scope.editor.setKeyboardHandler("ace/keyboard/default")
+      if(utils.isTango) {
+        MediaStreamTrack.getSources(gotSources);
+        videoSelect.onchange = start;
+        start();
+      } else {
+        // TODO: get webrtc connection from tango and display video stream
       }
-*/
 
     }
   );
