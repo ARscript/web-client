@@ -8,22 +8,46 @@
     ng-if="!utils.isTango"
     ui-ace="{
       useWrapMode: true,
-      showGutter: false,
-      theme:'twilight',
-      mode:'html',
+      theme:'tomorrow_night',
+      mode:'javascript',
       firstLineNumber: 1,
       onLoad: aceLoaded,
-      onChange: aceChanged
+      onChange: aceChanged,
+      require: ['ace/ext/language_tools'],
+      advanced: {
+        enableSnippets: true,
+        enableBasicAutocompletion: true,
+        enableLiveAutocompletion: true
+      }
     }"
     ng-model="editorText"
     >
+    this is here right
     </div>
-    <md-checkbox
-      ng-model="data.vimMode"
-      aria-label="Vim Mode"
+    <div
+      layout="row"
+      layout-align="space-around center"
     >
-        Vim Mode: {{ data.vimMode  }}
-    </md-checkbox>
+      <select
+        id="videoSource"
+        class="form-control"
+      >
+      </select>
+      <md-checkbox
+        ng-model="vimMode"
+        ng-click="toggleVimMode()"
+        aria-label="Vim Mode"
+      >
+          Vim Mode
+      </md-checkbox>
+      <md-button
+        ng-click="runScript()"
+        class="md-raised md-primary"
+      >
+        Run Script
+      </md-button>
+
+    </div>
   </div>
   <div
     flex="40"
@@ -33,11 +57,10 @@
     layout-padding
     layout-align="center start"
   >
-    <select
-      id="videoSource"
-      class="form-control"
+    <div
+        id="three-container"
     >
-    </select>
+    </div>
     <div
       id="video-container"
     >

@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'ngMaterial',
     'ui.ace',
-    'bd.sockjs'
+    'bd.sockjs',
+    'lumx'
   ])
   .config(function ($routeProvider) {
     $routeProvider

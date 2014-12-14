@@ -1,4 +1,6 @@
 // bower:scss
+@import "bourbon/dist/_bourbon.scss";
+@import "neat/app/assets/stylesheets/_neat.scss";
 // endbower
 
 .browsehappy {
@@ -8,14 +10,19 @@
 }
 
 .ace_editor {
-  height: 400px;
+  height: 600px;
+}
 
+.video-container {
+  position: absolute;
+}
+.three-container {
+ position: absolute;
 }
 
 #video-container {
-
   & > video {
-    top: -255px;
+    // top: -255px;
     left: 0;
     z-index: 1;
     position: relative;
@@ -28,6 +35,7 @@
     position: relative;
   }
 }
+
 
 /* Space out content a bit */
 body {
