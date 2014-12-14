@@ -61,7 +61,6 @@ angular.module('webClientApp')
       };
 
       $scope.showSetup = function(ev) {
-
         $mdDialog.show({
           //controller: DialogController,
           templateUrl: '/views/setup.tmpl.html',
@@ -87,6 +86,7 @@ angular.module('webClientApp')
       };
 
       $scope.room_key = 'a234bo23';
+
 
       $scope.wsTest = function(){
         if(!'WebSocket' in window) {
