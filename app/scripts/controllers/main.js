@@ -17,6 +17,7 @@ angular.module('webClientApp')
     , utils
     , sock
     , $http
+    , $mdDialog
     )
     {
       ace.config.set("basePath","bower_components/ace-builds/src-min-noconflict")
@@ -59,6 +60,24 @@ angular.module('webClientApp')
         eval($scope.editorText);
       };
 
+      $scope.showSetup = function(ev) {
+
+        $mdDialog.show({
+          //controller: DialogController,
+          templateUrl: '/views/setup.tmpl.html',
+          targetEvent: ev,
+        })
+        .then(function(answer) {
+
+          //$scope.alert = 'You said the information was "' + answer + '".';
+        }, function() {
+          //$scope.alert = 'You cancelled the dialog.';
+        });
+      };
+
+      // TODO: show this setup if !tango
+      $scope.showSetup();
+      // TODO: show room_key if tango
 
       $scope.wsTest = function(){
         if(!'WebSocket' in window) {
