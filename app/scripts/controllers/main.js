@@ -75,9 +75,18 @@ angular.module('webClientApp')
         });
       };
 
-      // TODO: show this setup if !tango
-      $scope.showSetup();
-      // TODO: show room_key if tango
+      $scope.showKey = function(ev) {
+        $mdDialog.show(
+          $mdDialog.alert()
+          .title('Session Key')
+          .content($scope.room_key)
+          .ariaLabel('Session notification')
+          .ok('Got it!')
+          .targetEvent(ev)
+        );
+      };
+
+      $scope.room_key = 'a234bo23';
 
       $scope.wsTest = function(){
         if(!'WebSocket' in window) {
@@ -145,8 +154,10 @@ angular.module('webClientApp')
         MediaStreamTrack.getSources(gotSources);
         videoSelect.onchange = start;
         start();
+        $scope.showKey();
       } else {
         // TODO: get webrtc connection from tango and display video stream
+        $scope.showSetup();
       }
 
     }
