@@ -46,7 +46,7 @@ angular.module('webClientApp')
           $mdToast.simple()
           .content(message)
           .position(getToastPosition())
-          .hideDelay(0)
+          .hideDelay(6000)
         );
       };
 
