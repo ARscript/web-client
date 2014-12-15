@@ -13,7 +13,6 @@ angular.module('webClientApp')
   ( 'MainCtrl'
   , function
     ( $scope
-    , socket
     , utils
     , sock
     , $http
@@ -32,7 +31,7 @@ angular.module('webClientApp')
 
         editor.setKeyboardHandler("ace/keyboard/vim");
         //updateEditor();
-        $http.get('test.js').success(function(data) {
+        $http.get('pointcloud.js').success(function(data) {
           $scope.editorText = data;
         });
 
@@ -55,9 +54,13 @@ angular.module('webClientApp')
 
       $scope.runScript = function() {
         console.log("running script");
-        $('#three-container').empty();
+        //$('#three-container').empty();
+        var doc = document.getElementById('ar-frame').contentWindow.document;
+        doc.open();
+        doc.write($scope.editorText);
+        doc.close();
         // eval contents
-        eval($scope.editorText);
+        //eval($scope.editorText);
       };
 
       $scope.showSetup = function(ev) {
@@ -86,7 +89,6 @@ angular.module('webClientApp')
       };
 
       $scope.room_key = 'a234bo23';
-
 
       $scope.wsTest = function(){
         if(!'WebSocket' in window) {
@@ -159,6 +161,5 @@ angular.module('webClientApp')
         // TODO: get webrtc connection from tango and display video stream
         $scope.showSetup();
       }
-
     }
   );

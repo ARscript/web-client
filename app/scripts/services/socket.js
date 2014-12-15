@@ -13,10 +13,13 @@ angular.module('webClientApp')
   , function
     ( sock
     , utils
+    , $rootScope
     )
     {
+      this.data = {};
 
       var localWS = new WebSocket("ws://localhost:8887/echo");
+
       localWS.onopen = function() {
         utils.showInfoMessage('local socket connected');
         console.log('local ws send: ');
@@ -26,7 +29,7 @@ angular.module('webClientApp')
       localWS.onmessage = function (evt) {
         var received_msg = evt.data;
         console.log('<-- ' + received_msg);
-        sock.send(received_msg)
+        //sock.send(received_msg)
       };
 
       localWS.onclose = function() {

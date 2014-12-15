@@ -2,15 +2,12 @@
   <div
     flex="60"
     flex-sm="40"
-    hide-lg
-    ng-hide="{{ utils.isTango }}"
   >
     <div
-    ng-if="!utils.isTango"
     ui-ace="{
       useWrapMode: true,
       theme:'tomorrow_night',
-      mode:'javascript',
+      mode:'html',
       firstLineNumber: 1,
       onLoad: aceLoaded,
       onChange: aceChanged,
@@ -23,17 +20,11 @@
     }"
     ng-model="editorText"
     >
-    this is here right
     </div>
     <div
       layout="row"
       layout-align="space-around center"
     >
-      <select
-        id="videoSource"
-        class="form-control"
-      >
-      </select>
       <md-checkbox
         ng-model="vimMode"
         ng-click="toggleVimMode()"
@@ -41,13 +32,13 @@
       >
           Vim Mode
       </md-checkbox>
+
       <md-button
         ng-click="runScript()"
         class="md-raised md-primary"
       >
         Run Script
       </md-button>
-
     </div>
   </div>
   <div
@@ -61,6 +52,7 @@
     <div
         id="three-container"
     >
+      <iframe id="ar-frame"></iframe>
     </div>
     <div
       id="video-container"
@@ -70,6 +62,17 @@
         width="500"
         autoplay
       />
+    </div>
+    <div
+      layout="row"
+      layout-align="space-around center"
+    >
+      <select
+        id="videoSource"
+        class="form-control"
+        ng-hide="{{ !utils.isTango }}"
+      >
+      </select>
     </div>
   </div>
 </div>
