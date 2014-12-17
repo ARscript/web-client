@@ -19,7 +19,6 @@ angular
     'ngMaterial',
     'ui.ace',
     'bd.sockjs',
-    'lumx'
   ])
   .config(function ($routeProvider) {
     $routeProvider
