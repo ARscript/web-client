@@ -28,7 +28,7 @@ angular.module('webClientApp')
 
       localWS.onmessage = function (evt) {
         var received_msg = evt.data;
-        console.log('<-- ' + received_msg);
+        console.log('<-- socket service' + received_msg);
         //sock.send(received_msg)
       };
 

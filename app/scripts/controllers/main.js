@@ -14,7 +14,6 @@ angular.module('webClientApp')
   , function
     ( $scope
     , utils
-    , sock
     , $http
     , $mdDialog
     )

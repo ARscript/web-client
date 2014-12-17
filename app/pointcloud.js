@@ -11,6 +11,7 @@ init();
 animate();
 
 var pointcloud;
+var buffer;
 
 // Connect to local websocket for data
 var ws = new WebSocket("ws://localhost:8887/echo");
@@ -20,10 +21,14 @@ ws.onopen = function() {
   ws.send("We are connected");
 };
 
+// Get data from tango service
 ws.onmessage = function (evt) {
-  var received_msg = evt.data;
-  console.log('<-- ' + received_msg);
-  pointcloud = createPointCloud(evt.data);
+  var data = evt.data;
+  console.log('<-- ' + data);
+  var obj = JSON.parse(data);
+  buffer = obj['buffer'];
+  console.log(buffer);
+  pointcloud = createPointCloud(buffer);
 };
 
 ws.onclose = function() {
@@ -33,19 +38,17 @@ ws.onclose = function() {
 function init() {
   var contentWidth = window.innerWidth;
   var contentHeight = window.innerHeight;
+
   camera = new THREE.PerspectiveCamera(75, contentWidth / contentHeight, 1, 10000);
   camera.position.z = 250;
 
   scene = new THREE.Scene();
-
-  //var pointCloud = createPointCloud(buffer);
-
   scene.fog = new THREE.FogExp2(0x000000, 0.0009);
-  //scene.add(pointCloud);
+
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(contentWidth, contentHeight);
 
-  $(renderer.domElement).prependTo('#three-container')
+  document.body.appendChild( renderer.domElement );
 }
 
 function createPointCloud(buffer) {
@@ -54,9 +57,7 @@ function createPointCloud(buffer) {
   geometry = new THREE.Geometry({dynamic:true});
   material = new THREE.PointCloudMaterial({size:pointSize, vertexColors:true});
 
-  // Load the pointcloud
   for(var i=0; i < buffer.length; i+=3) {
-    // Point
     var x = buffer[i];
     var y = buffer[i+1];
     var z = buffer[i+2];
@@ -66,12 +67,13 @@ function createPointCloud(buffer) {
 
   geometry.colors = colors;
 
-  var pointcloud = new THREE.ParticleSystem(geometry, material);
+  var pointcloud = new THREE.PointCloud(geometry, material);
+  scene.add(pointcloud);
 
   return pointcloud;
 }
 
-function updatePointCloud(buffer) {
+function updatePointCloud() {
 
   // Load the pointcloud
   for(var i=0; i < buffer.length; i+=3) {
@@ -91,6 +93,8 @@ function updatePointCloud(buffer) {
 
 function animate() {
   requestAnimationFrame(animate);
+  // update pointcloud verticies
+  //updatePointCloud();
   renderer.render(scene, camera);
 }
 </script>

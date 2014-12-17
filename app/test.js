@@ -1,20 +1,18 @@
+<html>
+<head>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r69/three.js"></script>
+</head>
+<body>
+<script>
 var camera, scene, renderer;
 var geometry, material, mesh;
 init();
 animate();
 
-function onXyzIjrecv(data) {
-  // do something cool
-}
-
-function onPoseRecv(data) {
-  // do something cool
-}
-
 function init() {
 
-  var contentWidth = $('#video-container').width()
-  var contentHeight = $('#video-container').height()
+  var contentWidth = window.innerWidth;
+  var contentHeight = window.innerHeight;
   camera = new THREE.PerspectiveCamera(75, contentWidth / contentHeight, 1, 10000);
   camera.position.z = 1000;
 
@@ -32,7 +30,7 @@ function init() {
   renderer = new THREE.WebGLRenderer({alpha: true});
   renderer.setSize(contentWidth, contentHeight);
 
-  $(renderer.domElement).prependTo('#three-container')
+  document.body.appendChild( renderer.domElement  );
 
 }
 
@@ -46,3 +44,7 @@ function animate() {
   renderer.render(scene, camera);
 
 }
+
+</script>
+</body>
+</html>
