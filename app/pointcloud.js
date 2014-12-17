@@ -36,8 +36,8 @@ ws.onclose = function() {
 };
 
 function init() {
-  var contentWidth = window.innerWidth;
-  var contentHeight = window.innerHeight;
+  var contentWidth = window.innerWidth - 20;
+  var contentHeight = window.innerHeight - 20;
 
   camera = new THREE.PerspectiveCamera(75, contentWidth / contentHeight, 1, 10000);
   camera.position.z = 250;
