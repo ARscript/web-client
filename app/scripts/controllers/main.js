@@ -160,5 +160,20 @@ angular.module('webClientApp')
         // TODO: get webrtc connection from tango and display video stream
         $scope.showSetup();
       }
+
+      $scope.showListBottomSheet = function($event) {
+        $scope.alert = '';
+        $mdBottomSheet.show({
+          templateUrl: 'bottom-sheet-list-template.html',
+          controller: 'ListBottomSheetCtrl',
+          targetEvent: $event
+
+        }).then(function(clickedItem) {
+          $scope.alert = clickedItem.name + ' clicked!';
+        });
+      };
+
+
+
     }
   );
